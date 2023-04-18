@@ -22,6 +22,14 @@ public class UserInterface {
         return input;
     }
 
+    public String getInputFromConsole() {
+        return new Scanner(System.in).next();
+    }
+
+    public void printRating(int rating) {
+        System.out.printf("Your rating: %d\n", rating);
+    }
+
     public void printWin(String computerSign) {
         System.out.printf("Well done. The computer chose %s and failed\n", computerSign);
     }
@@ -36,6 +44,15 @@ public class UserInterface {
 
     public void printBye() {
         System.out.println("Bye!");
+    }
+
+    public String getNameFromConsole() {
+        System.out.print("Enter your name: ");
+        return new Scanner(System.in).next();
+    }
+
+    public void printGreeting(String name) {
+        System.out.printf("Hello, %s\n", name);
     }
 
 
