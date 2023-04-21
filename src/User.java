@@ -1,6 +1,6 @@
 public class User {
-    String name;
-    int rating;
+    private String name;
+    private int rating;
 
     public User(String name) {
         this.name = name;

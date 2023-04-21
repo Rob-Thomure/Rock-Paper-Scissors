@@ -3,9 +3,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserInterface {
+    private String validInput = "(!exit)|(!rating)|(rock)|(paper)|(scissors)";
 
     public String getSignFromConsole() {
-        String validInput = "(!exit)|(rock)|(paper)|(scissors)";
         Pattern pattern = Pattern.compile(validInput, Pattern.CASE_INSENSITIVE);
         String input = "";
         Scanner scanner = new Scanner(System.in);

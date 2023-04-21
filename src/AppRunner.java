@@ -7,21 +7,7 @@ public class AppRunner {
         this.computerPlayer = new ComputerPlayer();
     }
 
-    public void runApp() {
-        boolean quit = false;
-        while (!quit) {
-            String humanHandSign = userInterface.getSignFromConsole();
-            if (!humanHandSign.equalsIgnoreCase("!exit")) {
-                String computerHandSign = computerPlayer.chooseSign();
-                GameResults gameResults = GameResults.getGameResults(HandSigns.valueOf(humanHandSign.toUpperCase())
-                        , HandSigns.valueOf(computerHandSign.toUpperCase()));
-                printResults(gameResults, computerHandSign);
-            } else {
-                quit = true;
-            }
-        }
-        userInterface.printBye();
-    }
+
 
     private void printResults(GameResults gameResults, String computerHandSign) {
         switch (gameResults) {
@@ -31,13 +17,15 @@ public class AppRunner {
         }
     }
 
-    public void runApp2() {
+    public void runApp() {
         boolean quit = false;
         User user = new User(userInterface.getNameFromConsole());
+        userInterface.printGreeting(user.getName());
         user.addInitialRatingFromFile(new RatingsFileReader().getUserRatingFromFile(user.getName()));
         while (!quit) {
             String humanHandSign = userInterface.getSignFromConsole();
             if (humanHandSign.equalsIgnoreCase("!exit")) {
+                userInterface.printBye();
                 quit = true;
             } else if (humanHandSign.equalsIgnoreCase("!rating")) {
                 userInterface.printRating(user.getRating());
