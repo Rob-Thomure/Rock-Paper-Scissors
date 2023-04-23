@@ -28,6 +28,7 @@ public class WinningHandSigns {
     }
 
     public GameResults getGameResult(String user, String computer) {
+        // reversed cycle
         List<String> userLosingList = winningMap.get(user.toLowerCase());
         List<String> computerLosingList = winningMap.get(computer.toLowerCase());
         if (userLosingList.contains(computer.toLowerCase())) {
