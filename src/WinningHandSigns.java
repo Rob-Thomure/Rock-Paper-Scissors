@@ -9,9 +9,9 @@ public class WinningHandSigns {
     public WinningHandSigns(HandSigns handSigns) {
         this.winningMap = new HashMap<>();
         if (handSigns.isDefaultHandSigns()) {
-            winningMap.put("scissors", List.of("paper"));
-            winningMap.put("rock", List.of("scissors"));
-            winningMap.put("paper", List.of("rock"));
+            winningMap.put("paper", List.of("scissors"));
+            winningMap.put("scissors", List.of("rock"));
+            winningMap.put("rock", List.of("paper"));
         } else {
             List<String> handSignsList = handSigns.getHandSignsList();
             for (int i = 0; i < handSignsList.size(); i++) {
@@ -24,15 +24,16 @@ public class WinningHandSigns {
                 winningMap.put(key, values);
             }
         }
+
     }
 
     public GameResults getGameResult(String user, String computer) {
-        List<String> userList = winningMap.get(user.toLowerCase());
-        List<String> computerList = winningMap.get(computer.toLowerCase());
-        if (userList.contains(computer.toLowerCase())) {
-            return GameResults.WIN;
-        } else if (computerList.contains(user.toLowerCase())) {
+        List<String> userLosingList = winningMap.get(user.toLowerCase());
+        List<String> computerLosingList = winningMap.get(computer.toLowerCase());
+        if (userLosingList.contains(computer.toLowerCase())) {
             return GameResults.LOSS;
+        } else if (computerLosingList.contains(user.toLowerCase())) {
+            return GameResults.WIN;
         } else {
             return GameResults.DRAW;
         }
