@@ -1,11 +1,11 @@
 import java.util.Random;
-import java.util.function.Supplier;
 
 public class ComputerPlayer {
-    private final Supplier<Integer> randomNum = () -> new Random().nextInt(3);
 
-    public String chooseSign() {
-        return HandSigns.getHandSign(randomNum.get());
+    public String chooseSign(HandSigns handSigns) {
+        int listSize = handSigns.getHandSignsListSize();
+        int randomNum = new Random().nextInt(listSize);
+        return handSigns.getHandSignsList().get(randomNum);
     }
 
 

@@ -1,15 +1,10 @@
 public class User {
-    private String name;
+    private final String name;
     private int rating;
 
     public User(String name) {
         this.name = name;
         this.rating = 0;
-    }
-
-    public User(String name, int rating) {
-        this.name = name;
-        this.rating = rating;
     }
 
     public void addInitialRatingFromFile(int rating) {

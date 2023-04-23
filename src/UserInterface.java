@@ -1,19 +1,16 @@
+import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class UserInterface {
-    private String validInput = "(!exit)|(!rating)|(rock)|(paper)|(scissors)";
 
-    public String getSignFromConsole() {
-        Pattern pattern = Pattern.compile(validInput, Pattern.CASE_INSENSITIVE);
+    public String getSignFromConsole(HandSigns handSigns) {
+        Commands commands = new Commands();
         String input = "";
         Scanner scanner = new Scanner(System.in);
         boolean isValidInput = false;
         while (!isValidInput) {
-            input = scanner.next();
-            Matcher matcher = pattern.matcher(input);
-            if (matcher.matches()) {
+            input = scanner.next().toLowerCase();
+            if (commands.isValidCommand(input) || handSigns.isValidHandSign(input)) {
                 isValidInput = true;
             } else {
                 System.out.println("Invalid input");
@@ -22,8 +19,9 @@ public class UserInterface {
         return input;
     }
 
-    public String getInputFromConsole() {
-        return new Scanner(System.in).next();
+    public List<String> getSignOptions() {
+        Scanner scanner = new Scanner(System.in);
+        return List.of(scanner.nextLine().split(","));
     }
 
     public void printRating(int rating) {
@@ -53,6 +51,10 @@ public class UserInterface {
 
     public void printGreeting(String name) {
         System.out.printf("Hello, %s\n", name);
+    }
+
+    public void printStart() {
+        System.out.println("Okay, let's start");
     }
 
 
